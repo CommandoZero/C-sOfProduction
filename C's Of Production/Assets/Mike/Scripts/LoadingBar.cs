@@ -1,32 +1,26 @@
 ﻿using UnityEngine.UI;
+using System;
 using UnityEngine;
 
-public class LoadingBar : MonoBehaviour {
+[Serializable]
+public class LoadingBar {
 
-    public static LoadingBar instance;
+    public Animator animator;
     public Scrollbar loadingBar;
-
-    private void Start()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
-
-    public LoadingBar GetInstance()
-    {
-        return instance;
-    }
 
     //This function expects a value between 1 to 100 to represent percentage
     public void UpdateLoadingBar(int value)
     {
         loadingBar.size = value / 100;
+
+        if(value >= 100)
+        {
+            animator.SetBool("Done",true);
+        }
+        else
+        {
+            animator.SetBool("Done", false);
+        }
     }
 
 }
