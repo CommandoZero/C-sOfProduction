@@ -3,7 +3,7 @@
 public class Gun : MonoBehaviour
 {
 
-    public enum Mode {Pistol=1,MachineGun=2,Shotgun=3};
+    public enum Mode { Pistol = 1, MachineGun = 2, Shotgun = 3 };
     public Mode FireMode = Mode.Pistol;
     public float damage = 25f;
     public bool randomizeDamage;
@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     public float shotGunSpread = 10;
     public float bulletsPerShot = 9;
     private Vector3 direction;
+    public AudioSource audio;
     public Animator anim;
 
     public void AddAmmo(int amount)
@@ -30,7 +31,7 @@ public class Gun : MonoBehaviour
         Cursor.visible = false;
         mouselocked = true;
 
-        switch(FireMode)
+        switch (FireMode)
         {
             case Mode.Pistol:
                 isAPistol = true;
@@ -50,20 +51,21 @@ public class Gun : MonoBehaviour
     {
         if (((isAPistol || isAShotgun) && Input.GetButtonDown("Fire1")) || isAMachineGun && Input.GetButton("Fire1"))
         {
+            audio.Play();
             anim.SetBool("Fired", true);
 
             if (!isAShotgun && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1000))
             {
 
-                if(hit.transform.tag.Equals("Enemy",System.StringComparison.Ordinal))
+                if (hit.transform.tag.Equals("Enemy", System.StringComparison.Ordinal))
                 {
-                    hit.transform.SendMessage("ApplyDamage", (randomizeDamage) ? Random.Range(damage,MaxDamage) : damage, SendMessageOptions.DontRequireReceiver);
+                    hit.transform.SendMessage("ApplyDamage", (randomizeDamage) ? Random.Range(damage, MaxDamage) : damage, SendMessageOptions.DontRequireReceiver);
                 }
 
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red, 5f);
                 ammo--;
             }
-            else if(isAShotgun)
+            else if (isAShotgun)
             {
                 for (int i = 0; i < bulletsPerShot; i++)
                 {
@@ -73,8 +75,8 @@ public class Gun : MonoBehaviour
                     direction = transform.TransformDirection(direction.normalized);
 
                     //Creat a ray to be shot from the camera directly forward (adjusted because of the way the mouse is centered)
-                    
-                    if(Physics.Raycast(new Ray (transform.position,direction),1000))
+
+                    if (Physics.Raycast(new Ray(transform.position, direction), 1000))
                     {
 
                         if (hit.transform.tag.Equals("Enemy", System.StringComparison.Ordinal))
@@ -95,9 +97,9 @@ public class Gun : MonoBehaviour
             anim.SetBool("Fired", false);
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(mouselocked)
+            if (mouselocked)
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;

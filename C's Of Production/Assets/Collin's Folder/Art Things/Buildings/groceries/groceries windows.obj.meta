@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d337fd90b3b3b748948f254a050976d
+guid: 640b5c65a3dcc55408a9b6c25720a38d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -53,7 +53,6 @@ ModelImporter:
     4300010: groceries05
     4300012: groceries06
     4300014: groceries07
-    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -85,7 +84,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 1.6
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -106,7 +105,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -131,7 +130,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

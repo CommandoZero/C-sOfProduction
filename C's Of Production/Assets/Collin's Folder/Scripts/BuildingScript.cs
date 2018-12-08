@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class BuildingScript : MonoBehaviour
 {
@@ -82,6 +81,7 @@ public class BuildingScript : MonoBehaviour
         for (int i = 0; i < enemySpawnTransforms.Length; i++)
         {
             GameObject tempEnemy = Instantiate(enemyObject, enemySpawnTransforms[i].position, Quaternion.identity);
+            tempEnemy.GetComponent<EnemyAi>().PassWaypoints(enemySpawnTransforms);
             enemies.Add(tempEnemy);
         }
     }

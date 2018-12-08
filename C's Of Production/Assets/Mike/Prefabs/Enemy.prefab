@@ -278,7 +278,6 @@ GameObject:
   - component: {fileID: 33804644513668424}
   - component: {fileID: 23201412175348646}
   - component: {fileID: 136921878457815250}
-  - component: {fileID: 195070502495965604}
   - component: {fileID: 114486815722392848}
   - component: {fileID: 54487959920679766}
   m_Layer: 0
@@ -1453,6 +1452,7 @@ MonoBehaviour:
   EnemyHealth: 100
   DamageReplacement: {fileID: 1105713186560996, guid: fff166c2226b4554696b780d425ae0f3,
     type: 2}
+  enemyAnimator: {fileID: 95409123941085070}
 --- !u!136 &136921878457815250
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1518,24 +1518,3 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.008395698, y: 0.00011084345, z: -0.0000013500685}
     m_Extent: {x: 0.009924874, y: 0.006088918, z: 0.00173374}
   m_DirtyAABB: 0
---- !u!195 &195070502495965604
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1645689346733552}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class ClerkAi : MonoBehaviour {
+public class ClerkAi : MonoBehaviour
+{
 
     public GameObject captureArea;
     public MeshRenderer Meshrend;
@@ -10,11 +11,11 @@ public class ClerkAi : MonoBehaviour {
     Rigidbody baseRigidbody;
     Quaternion rot;
 
-	void Start ()
+    void Start()
     {
         Meshrend = GetComponent<MeshRenderer>();
         baseRigidbody = GetComponent<Rigidbody>();
-	}
+    }
 
     public void ApplyDamage()
     {
@@ -35,7 +36,7 @@ public class ClerkAi : MonoBehaviour {
         baseRigidbody.isKinematic = true;
         transform.rotation = rot;
 
-        if(captured)
+        if (captured)
         {
             //Change color
             Meshrend.enabled = true;

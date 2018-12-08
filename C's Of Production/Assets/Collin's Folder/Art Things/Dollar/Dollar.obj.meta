@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2190edd4160df5445aa8f386e0ee6dd8
+guid: cb076c6e9686f8b448c43dea65f2c3db
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -47,7 +47,6 @@ ModelImporter:
     4300008: dollar_eyebrow2
     4300010: dollar_pupil1
     4300012: dollar_pupil2
-    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -100,7 +99,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -125,7 +124,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

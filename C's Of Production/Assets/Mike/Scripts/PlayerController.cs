@@ -9,10 +9,7 @@ public class PlayerController : MonoBehaviour {
     public float YMovementSensitivity = 0.5f;
     public GameObject CameraObject;
     private Rigidbody playerRigid;
-    public GameObject Gun;
-    public float SwaySpeed = 5f;
     public GameObject PlayerDeathReplacement;
-    private Quaternion swayQuaternion;
 
     private void Start()
     {
@@ -22,13 +19,15 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         transform.eulerAngles += new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * YSensitivity;
         CameraObject.transform.eulerAngles += new Vector3(-Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * XSensitivity;
-        playerRigid.MovePosition(transform.position+transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal") * XMovementSensitivity, 0, Input.GetAxis("Vertical") * YMovementSensitivity)));
-
-        //swayQuaternion = Quaternion.Euler(0f, -Input.GetAxis("Mouse Y"), 0f);
-
-        //Gun.transform.localRotation = Quaternion.Slerp(CameraObject.transform.rotation, swayQuaternion, Time.deltaTime * SwaySpeed);
+        playerRigid.MovePosition(transform.position+transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal") * XMovementSensitivity * Time.deltaTime, Input.GetAxis("Jump"), Input.GetAxis("Vertical") * YMovementSensitivity * Time.deltaTime)));
+        
     }
 
     public void ApplyDamage(float amount)

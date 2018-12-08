@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using UnityEngine.AI;
 using UnityEngine;
 
-public class EnemyAi : MonoBehaviour {
+public class EnemyAi : MonoBehaviour
+{
 
     public float rotationSpeed = 1f;
     public float speed = 2f;
@@ -23,16 +23,20 @@ public class EnemyAi : MonoBehaviour {
     private Transform destination;
     private Vector3 offset = new Vector3(180, 0, 0);
 
-    public void PassWaypoints(List<Transform> points)
+    public void PassWaypoints(Transform [] points)
     {
-        WaypointsFound = points;
+        foreach(Transform t in points)
+        {
+            WaypointsFound.Add(t);
+        }
+
         SelectRandomDestination();
     }
 
     public void ApplyDamage(float amount)
     {
         EnemyHealth -= amount;
-        if(EnemyHealth <= 0)
+        if (EnemyHealth <= 0)
         {
             Instantiate(DamageReplacement, transform.position, transform.rotation);
             Destroy(gameObject);
@@ -43,7 +47,7 @@ public class EnemyAi : MonoBehaviour {
     {
         GameObject[] pointsFound = GameObject.FindGameObjectsWithTag("Waypoint");
 
-        foreach(GameObject g in pointsFound)
+        foreach (GameObject g in pointsFound)
         {
             WaypointsFound.Add(g.transform);
         }
@@ -51,16 +55,10 @@ public class EnemyAi : MonoBehaviour {
 
     void SelectRandomDestination(bool random = false)
     {
-        if(WaypointsFound.Count != 0)
+        if (WaypointsFound.Count != 0)
         {
-            if(random)
-            {
-                WaypointIndex = Random.Range(0, WaypointsFound.Count);
-            }
-            else
-            {
                 //If we hit the end of the list
-                if(WaypointIndex >= WaypointsFound.Count)
+                if (WaypointIndex >= WaypointsFound.Count)
                 {
                     WaypointIndex = 0;
                 }
@@ -68,16 +66,15 @@ public class EnemyAi : MonoBehaviour {
                 {
                     WaypointIndex++;
                 }
-            }
-
-        }
 
         destination = WaypointsFound[WaypointIndex];
+        }
+
     }
 
     private void OnCollisionEnter(Collision trigger)
     {
-        if(trigger.transform.tag.Equals("Player",System.StringComparison.Ordinal))
+        if (trigger.transform.tag.Equals("Player", System.StringComparison.Ordinal))
         {
             trigger.transform.SendMessage("ApplyDamage", Random.Range(minDamage, maxDamage), SendMessageOptions.DontRequireReceiver);
         }
@@ -96,8 +93,8 @@ public class EnemyAi : MonoBehaviour {
             {
                 transform.LookAt(playerTransform);
                 //transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, playerTransform.position - transform.position, Time.deltaTime, 0f));
-                transform.position = Vector3.Lerp(transform.position, playerTransform.position, Time.deltaTime*speed);
-            
+                transform.position = Vector3.Lerp(transform.position, playerTransform.position, Time.deltaTime * speed);
+
             }
 
             if (stopped)
@@ -112,14 +109,14 @@ public class EnemyAi : MonoBehaviour {
                 {
 
                     enemyAnimator.SetBool("Fired", true);
-                    ray.transform.SendMessage("ApplyDamage",Random.Range(minDamage,maxDamage),SendMessageOptions.DontRequireReceiver);
+                    ray.transform.SendMessage("ApplyDamage", Random.Range(minDamage, maxDamage), SendMessageOptions.DontRequireReceiver);
                 }
             }
         }
         if (!ChasePlayer && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out ray, 50f))
         {
 
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 50f);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 50f);
 
             //If we saw the player CHASE HIM!
             if (playerTransform == null && ray.transform.tag.Equals("Player", System.StringComparison.Ordinal))

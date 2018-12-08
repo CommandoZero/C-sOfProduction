@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Collin's Folder\Scripts\BuildingScript.cs" />
     <Compile Include="Assets\Collin's Folder\Scripts\CitySpawnSystem.cs" />
+    <Compile Include="Assets\LoadALevel.cs" />
     <Compile Include="Assets\Mike\Scripts\AutoRotate.cs" />
     <Compile Include="Assets\Mike\Scripts\ClerkAi.cs" />
     <Compile Include="Assets\Mike\Scripts\EnemyAi.cs" />
