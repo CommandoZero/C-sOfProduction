@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour {
 
+    public float speed = 2f;
     public float WaitTime = 5f;
     public float minDamage = 5f;
     public float maxDamage = 20f;
@@ -11,17 +12,17 @@ public class EnemyAi : MonoBehaviour {
     public List<Transform> WaypointsFound = new List<Transform>();
     public float EnemyHealth;
     public GameObject DamageReplacement;
-    private NavMeshAgent NavAgent;
+    //private NavMeshAgent NavAgent;
     private int WaypointIndex;
     private bool ChasePlayer;
-    private bool debugPlayerDead;
+    private bool stopped;
     private RaycastHit ray;
     private Transform playerTransform;
+    private Transform destination;
 
     private void Start()
     {
         FindAllWaypoints();
-        NavAgent = GetComponent<NavMeshAgent>();
         SelectRandomDestination();
     }
 
@@ -66,8 +67,9 @@ public class EnemyAi : MonoBehaviour {
                 }
             }
 
-            NavAgent.destination = WaypointsFound[WaypointIndex].position;
         }
+
+        destination = WaypointsFound[WaypointIndex];
     }
 
     private void OnCollisionEnter(Collision trigger)
@@ -89,12 +91,14 @@ public class EnemyAi : MonoBehaviour {
             }
             else
             {
-                NavAgent.destination = playerTransform.position;
+                transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, destination.position - transform.position, speed * Time.deltaTime, 0f));
+                transform.position = Vector3.Lerp(transform.position, playerTransform.position, Time.deltaTime*speed);
+            
             }
 
-            if (NavAgent.isStopped)
+            if (stopped)
             {
-                NavAgent.isStopped = false;
+                stopped = false;
             }
 
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out ray, 50f))
@@ -107,11 +111,12 @@ public class EnemyAi : MonoBehaviour {
         }
         else if (!ChasePlayer && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out ray, 50f))
         {
-            if (NavAgent.remainingDistance < 0.5f)
+
+            if ((transform.position-destination.position).magnitude < 0.5f)
             {
-                if (!NavAgent.isStopped)
+                if (!stopped)
                 {
-                    NavAgent.isStopped = true;
+                    stopped = true;
                     RuntimeWaitTime = WaitTime;
                 }
                 else
@@ -119,7 +124,7 @@ public class EnemyAi : MonoBehaviour {
                     if (RuntimeWaitTime <= 0)
                     {
                         SelectRandomDestination(false);
-                        NavAgent.isStopped = false;
+                        stopped = false;
                     }
                     else
                     {
@@ -131,15 +136,17 @@ public class EnemyAi : MonoBehaviour {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 50f);
 
             //If we saw the player CHASE HIM!
-            if (!debugPlayerDead && ray.transform.tag.Equals("Player", System.StringComparison.Ordinal))
+            if (playerTransform == null && ray.transform.tag.Equals("Player", System.StringComparison.Ordinal))
             {
                 playerTransform = ray.transform;
                 ChasePlayer = true;
             }
         }
-        else
+
+        if (!stopped)
         {
-            return;
+            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, destination.position - transform.position, speed * Time.deltaTime, 0f));
+            transform.position = Vector3.Lerp(transform.position, destination.position, Time.deltaTime * speed);
         }
 	}
 }
