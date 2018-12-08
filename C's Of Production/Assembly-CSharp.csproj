@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BuildingScript.cs" />
     <Compile Include="Assets\Collin's Folder\CitySpawnSystem.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/cdesm/OneDrive/Documents/GitHub/C-sOfProduction/C's Of Production/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
