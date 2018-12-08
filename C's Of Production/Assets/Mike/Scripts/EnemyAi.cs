@@ -22,9 +22,9 @@ public class EnemyAi : MonoBehaviour {
     private Transform destination;
     private Vector3 offset = new Vector3(180, 0, 0);
 
-    private void Start()
+    public void PassWaypoints(List<Transform> points)
     {
-        FindAllWaypoints();
+        WaypointsFound = points;
         SelectRandomDestination();
     }
 

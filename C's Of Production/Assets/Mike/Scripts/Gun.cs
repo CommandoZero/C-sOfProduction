@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     public float shotGunSpread = 10;
     public float bulletsPerShot = 9;
     private Vector3 direction;
+    public Animator anim;
 
     public void AddAmmo(int amount)
     {
@@ -49,6 +50,8 @@ public class Gun : MonoBehaviour
     {
         if (((isAPistol || isAShotgun) && Input.GetButtonDown("Fire1")) || isAMachineGun && Input.GetButton("Fire1"))
         {
+            anim.SetBool("Fired", true);
+
             if (!isAShotgun && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1000))
             {
 
@@ -85,6 +88,11 @@ public class Gun : MonoBehaviour
                     }
                 }
             }
+        }
+        else
+        {
+
+            anim.SetBool("Fired", false);
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))
