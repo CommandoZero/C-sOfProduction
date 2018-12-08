@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939901320838218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.554, z: 0.498}
+  m_LocalPosition: {x: 0, y: 0.554, z: 0.443}
   m_LocalScale: {x: 0.15299141, y: 0.15299141, z: 0.42466608}
   m_Children: []
   m_Father: {fileID: 4771220711185068}
@@ -148,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1185841266088306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.705, z: 0.413}
+  m_LocalPosition: {x: 0, y: 0.705, z: 0.388}
   m_LocalScale: {x: 0.4661034, y: 0.15299, z: 0.18341072}
   m_Children: []
   m_Father: {fileID: 4771220711185068}
@@ -189,8 +189,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1434138398604952}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.434, y: 0.47199988, z: 0.46397513}
+  m_LocalRotation: {x: -0, y: -0.000000119209275, z: -0, w: 1}
+  m_LocalPosition: {x: 0.43, y: 0.47199988, z: 0.322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4028093234380150}
@@ -434,6 +434,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66861e56eb978f4eb527d9a027604de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 1
+  speed: 2
   WaitTime: 5
   minDamage: 5
   maxDamage: 20
@@ -460,7 +462,7 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1645689346733552}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5

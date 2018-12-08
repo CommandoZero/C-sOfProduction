@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour {
 
+    public float rotationSpeed = 1f;
     public float speed = 2f;
     public float WaitTime = 5f;
     public float minDamage = 5f;
@@ -19,6 +20,7 @@ public class EnemyAi : MonoBehaviour {
     private RaycastHit ray;
     private Transform playerTransform;
     private Transform destination;
+    private Vector3 offset = new Vector3(180, 0, 0);
 
     private void Start()
     {
@@ -46,7 +48,7 @@ public class EnemyAi : MonoBehaviour {
         }
     }
 
-    void SelectRandomDestination(bool random = true)
+    void SelectRandomDestination(bool random = false)
     {
         if(WaypointsFound.Count != 0)
         {
@@ -76,7 +78,7 @@ public class EnemyAi : MonoBehaviour {
     {
         if(trigger.transform.tag.Equals("Player",System.StringComparison.Ordinal))
         {
-            ray.transform.SendMessage("ApplyDamage", Random.Range(minDamage, maxDamage), SendMessageOptions.DontRequireReceiver);
+            trigger.transform.SendMessage("ApplyDamage", Random.Range(minDamage, maxDamage), SendMessageOptions.DontRequireReceiver);
         }
     }
 
@@ -91,7 +93,8 @@ public class EnemyAi : MonoBehaviour {
             }
             else
             {
-                transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, destination.position - transform.position, speed * Time.deltaTime, 0f));
+                transform.LookAt(playerTransform);
+                //transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, playerTransform.position - transform.position, Time.deltaTime, 0f));
                 transform.position = Vector3.Lerp(transform.position, playerTransform.position, Time.deltaTime*speed);
             
             }
@@ -101,7 +104,7 @@ public class EnemyAi : MonoBehaviour {
                 stopped = false;
             }
 
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out ray, 50f))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out ray, 50f))
             {
                 if (Random.Range(0, 100) <= 5 && ray.transform.tag.Equals("Player", System.StringComparison.Ordinal))
                 {
@@ -109,29 +112,8 @@ public class EnemyAi : MonoBehaviour {
                 }
             }
         }
-        else if (!ChasePlayer && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out ray, 50f))
+        if (!ChasePlayer && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out ray, 50f))
         {
-
-            if ((transform.position-destination.position).magnitude < 0.5f)
-            {
-                if (!stopped)
-                {
-                    stopped = true;
-                    RuntimeWaitTime = WaitTime;
-                }
-                else
-                {
-                    if (RuntimeWaitTime <= 0)
-                    {
-                        SelectRandomDestination(false);
-                        stopped = false;
-                    }
-                    else
-                    {
-                        RuntimeWaitTime -= Time.fixedUnscaledDeltaTime;
-                    }
-                }
-            }
 
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 50f);
 
@@ -142,11 +124,31 @@ public class EnemyAi : MonoBehaviour {
                 ChasePlayer = true;
             }
         }
-
-        if (!stopped)
+        if (destination != null && !stopped && !ChasePlayer)
         {
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, destination.position - transform.position, speed * Time.deltaTime, 0f));
+            transform.LookAt(destination);
             transform.position = Vector3.Lerp(transform.position, destination.position, Time.deltaTime * speed);
+
+            if ((transform.position - destination.position).magnitude < 0.5f)
+            {
+                if (!stopped)
+                {
+                    stopped = true;
+                    RuntimeWaitTime = WaitTime;
+                }
+            }
+        }
+        if (stopped)
+        {
+            if (RuntimeWaitTime <= 0)
+            {
+                SelectRandomDestination(false);
+                stopped = false;
+            }
+            else
+            {
+                RuntimeWaitTime -= Time.fixedUnscaledDeltaTime;
+            }
         }
 	}
 }

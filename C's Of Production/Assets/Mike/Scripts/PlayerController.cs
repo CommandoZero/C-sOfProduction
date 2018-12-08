@@ -26,9 +26,9 @@ public class PlayerController : MonoBehaviour {
         CameraObject.transform.eulerAngles += new Vector3(-Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * XSensitivity;
         playerRigid.MovePosition(transform.position+transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal") * XMovementSensitivity, 0, Input.GetAxis("Vertical") * YMovementSensitivity)));
 
-        swayQuaternion = Quaternion.Euler(Input.GetAxis("Mouse X"), -Input.GetAxis("Mouse Y"), 0f);
+        //swayQuaternion = Quaternion.Euler(0f, -Input.GetAxis("Mouse Y"), 0f);
 
-        Gun.transform.rotation = Quaternion.Slerp(CameraObject.transform.rotation, swayQuaternion, Time.deltaTime * SwaySpeed);
+        //Gun.transform.localRotation = Quaternion.Slerp(CameraObject.transform.rotation, swayQuaternion, Time.deltaTime * SwaySpeed);
     }
 
     public void ApplyDamage(float amount)
