@@ -28,7 +28,7 @@ public class BuildingScript : MonoBehaviour
 
     public void TakeBuilding()
     {
-        clerkObject.GetComponent<MeshRenderer>().material = redIMat;
+        clerkObject.GetComponentInChildren<MeshRenderer>().material = redIMat;
         owned = true;
         CitySpawnSystem.Instance.UpdateTerritory();
     }

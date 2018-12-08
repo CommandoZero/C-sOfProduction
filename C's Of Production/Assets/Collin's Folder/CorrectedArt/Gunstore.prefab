@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValue: 1
   maxValue: 10
-  enemyObject: {fileID: 1645689346733552, guid: 8bfbd90e0b0cf504189f3c4334c88128,
+  enemyObject: {fileID: 1842597785271848, guid: 80cddc1bd89e5b14cbe420a5baefe71e,
     type: 2}
   clerkObject: {fileID: 1591734603416820, guid: b8a96b98297db784387645354b4bc4f0,
     type: 2}
