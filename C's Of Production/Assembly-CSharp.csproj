@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Collin's Folder\Scripts\BuildingScript.cs" />
     <Compile Include="Assets\Collin's Folder\Scripts\CitySpawnSystem.cs" />
+    <Compile Include="Assets\Mike\Scripts\AutoRotate.cs" />
     <Compile Include="Assets\Mike\Scripts\ClerkAi.cs" />
     <Compile Include="Assets\Mike\Scripts\EnemyAi.cs" />
     <Compile Include="Assets\Mike\Scripts\Gun.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Mike\Scripts\PlayerUI.cs" />
     <Compile Include="Assets\Mike\Scripts\ShopCaptureZone.cs" />
     <Compile Include="Assets\Mike\Scripts\StatusText.cs" />
+    <Compile Include="Assets\Mike\Scripts\TimedObjectDestructor.cs" />
     <Compile Include="Assets\Mike\Scripts\UIAnimationCallBack.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Mike/Documents/Projects/C-sOfProduction/C's Of Production/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

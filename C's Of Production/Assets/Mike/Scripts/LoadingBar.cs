@@ -9,9 +9,14 @@ public class LoadingBar {
     public Scrollbar loadingBar;
 
     //This function expects a value between 1 to 100 to represent percentage
-    public void UpdateLoadingBar(int value)
+    public void UpdateLoadingBar(float value)
     {
-        loadingBar.size = value / 100;
+        if(!loadingBar.IsActive())
+        {
+            loadingBar.gameObject.SetActive(true);
+        }
+
+        loadingBar.size = value / 100.0f;
 
         if(value >= 100)
         {

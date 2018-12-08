@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 4014812382975826}
   - component: {fileID: 33400170306288976}
   - component: {fileID: 23247986528262922}
-  - component: {fileID: 65836691714473004}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -77,7 +76,6 @@ GameObject:
   - component: {fileID: 4472627734482512}
   - component: {fileID: 33691222816384644}
   - component: {fileID: 23906734567569574}
-  - component: {fileID: 65852183273540988}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -119,7 +117,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1111365290647842}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.062766, y: 3.07, z: -7.312459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -350,30 +348,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &65836691714473004
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1572718973517684}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65852183273540988
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1946771175792542}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &81443094880179662
 AudioListener:
   m_ObjectHideFlags: 1
@@ -408,7 +382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39b41a06d86b8444a970feb66faf73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FireMode: 1
   ammo: 50
+  shotGunSpread: 10
+  bulletsPerShot: 9
 --- !u!136 &136102997939229032
 CapsuleCollider:
   m_ObjectHideFlags: 1

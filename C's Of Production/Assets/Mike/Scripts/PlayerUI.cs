@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour {
 
     private static PlayerUI instance;
     public LoadingBar loadingBar;
     public StatusText statusText;
+    public Scrollbar healthBar;
 
     public static PlayerUI GetInstance()
     {
@@ -20,6 +22,14 @@ public class PlayerUI : MonoBehaviour {
         else
         {
             Destroy(this);
+        }
+    }
+
+    public void UpdateHealth(float health)
+    {
+        if (!(health <= 0))
+        {
+            healthBar.size = health / 100;
         }
     }
 
@@ -40,7 +50,7 @@ public class PlayerUI : MonoBehaviour {
         statusText.UpdateText(message);
     }
 
-    public void UpdateLoadingBar(int val)
+    public void UpdateLoadingBar(float val)
     {
         loadingBar.UpdateLoadingBar(val);
     }

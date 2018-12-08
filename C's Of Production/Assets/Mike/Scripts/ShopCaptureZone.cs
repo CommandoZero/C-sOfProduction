@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShopCaptureZone : MonoBehaviour {
 
     public float DistanceTilCantInteract = 2.5f;
+    public float captureTime = 1;
     public GameObject playerObject;
     public ClerkAi clerk;
 
@@ -18,16 +17,27 @@ public class ShopCaptureZone : MonoBehaviour {
 
     private void Update()
     {
-        if(playerObject!= null && (playerObject.transform.position-transform.position).magnitude > DistanceTilCantInteract)
+        if (playerObject != null)
         {
-            playerObject = null;
+            if ((playerObject.transform.position - transform.position).magnitude > DistanceTilCantInteract)
+            {
+                playerObject = null;
+            }
+
+            captureTime += Time.deltaTime * 10;
+
+            PlayerUI.GetInstance().UpdateLoadingBar(captureTime);
+
+            if (captureTime >= 100)
+            {
+                PlayerUI.GetInstance().updateStatusText("Point Captured!");
+                clerk.ResetClerk(true);
+                captureTime = 1;
+            }
         }
         else
         {
-            if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E))
-            {
-                clerk.ResetClerk();
-            }
+            return;
         }
     }
 
