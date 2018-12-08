@@ -60,7 +60,6 @@ public class CitySpawnSystem : MonoBehaviour
                 GameObject tempArea = Instantiate(buildingObjects[buildingtype], new Vector3
                                       (i * distanceBetweenBuildings, -0.01f,
                                        j * distanceBetweenBuildings), Quaternion.Euler(new Vector3(0, 90 * randomRotation, 0)), gameObject.transform);
-                tempArea.GetComponent<BuildingScript>().SetBuildingType(buildingtype);
 
                 //Spawn the streets in the accurate places
                 Instantiate(streetObject, new Vector3(
