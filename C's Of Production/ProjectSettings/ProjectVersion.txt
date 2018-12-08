@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 m_EditorVersion: 2018.2.8f1
 =======
 m_EditorVersion: 2018.2.12f1
 >>>>>>> Collin's-Branch
+=======
+m_EditorVersion: 2018.2.12f1
+>>>>>>> origin/Collin's-Branch
