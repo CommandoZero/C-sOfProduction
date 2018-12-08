@@ -23,17 +23,20 @@ public class BuildingScript : MonoBehaviour
     [SerializeField]
     Transform clerkPos;
 
+    [SerializeField]
+    Material redIMat;
+
     public void TakeBuilding()
     {
+        clerkObject.GetComponent<MeshRenderer>().material = redIMat;
         owned = true;
         CitySpawnSystem.Instance.UpdateTerritory();
     }
 
     private void Start()
     {
-
-       // Instantiate(clerkObject, clerkPos.position, Quaternion.identity, transform);
-       SpawnEnemies();
+        SpawnEnemies();
+        Instantiate(clerkObject, clerkPos.position, Quaternion.identity, clerkPos);
     }
 
     public void GetResource()

@@ -532,13 +532,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596233428928730}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0.03, y: 0.21, z: -3.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4108294933601632}
   m_RootOrder: 25
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!4 &4114695724847298
 Transform:
   m_ObjectHideFlags: 1
@@ -1392,8 +1392,10 @@ MonoBehaviour:
   maxValue: 10
   enemyObject: {fileID: 1645689346733552, guid: 8bfbd90e0b0cf504189f3c4334c88128,
     type: 2}
-  clerkObject: {fileID: 0}
+  clerkObject: {fileID: 1591734603416820, guid: b8a96b98297db784387645354b4bc4f0,
+    type: 2}
   clerkPos: {fileID: 4113994131534650}
+  redIMat: {fileID: 2100000, guid: 1276866e60c52824e8d232c5f04b34c9, type: 2}
   type: 0
   enemySpawnTransforms:
   - {fileID: 4072590398724692}

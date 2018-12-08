@@ -529,6 +529,7 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   clerkObject: {fileID: 0}
   clerkPos: {fileID: 0}
+  redIMat: {fileID: 0}
   type: 0
   enemySpawnTransforms: []
   enemies: []
@@ -635,6 +636,7 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   clerkObject: {fileID: 0}
   clerkPos: {fileID: 0}
+  redIMat: {fileID: 0}
   type: 0
   enemySpawnTransforms: []
   enemies: []
@@ -858,6 +860,7 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   clerkObject: {fileID: 0}
   clerkPos: {fileID: 0}
+  redIMat: {fileID: 0}
   type: 0
   enemySpawnTransforms: []
   enemies: []
@@ -1308,6 +1311,7 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   clerkObject: {fileID: 0}
   clerkPos: {fileID: 0}
+  redIMat: {fileID: 0}
   type: 0
   enemySpawnTransforms: []
   enemies: []
@@ -1344,7 +1348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.023000002, y: 0.8428572}
   m_AnchorMax: {x: 0.28460774, y: 0.93428576}
-  m_AnchoredPosition: {x: -29.800003, y: -10.07}
+  m_AnchoredPosition: {x: -29.800049, y: -10.07}
   m_SizeDelta: {x: -63.42, y: 18.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1416786473
