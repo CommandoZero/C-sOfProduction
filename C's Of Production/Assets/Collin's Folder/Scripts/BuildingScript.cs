@@ -82,4 +82,12 @@ public class BuildingScript : MonoBehaviour
             TakeBuilding();
         }
     }
+
+    public void OnTriggerEnter(Collider hit)
+    {
+        if (hit.gameObject.GetComponent<PlayerController>())
+        {
+            GetResource();
+        }
+    }
 }
