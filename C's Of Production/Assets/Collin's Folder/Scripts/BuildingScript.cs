@@ -14,10 +14,26 @@ public class BuildingScript : MonoBehaviour
 
     bool owned = false;
 
+    [SerializeField]
+    GameObject enemyObject;
+
+    [SerializeField]
+    GameObject clerkObject;
+
+    [SerializeField]
+    Transform clerkPos;
+
     public void TakeBuilding()
     {
         owned = true;
         CitySpawnSystem.Instance.UpdateTerritory();
+    }
+
+    private void Start()
+    {
+
+       // Instantiate(clerkObject, clerkPos.position, Quaternion.identity, transform);
+       SpawnEnemies();
     }
 
     public void GetResource()
@@ -51,22 +67,17 @@ public class BuildingScript : MonoBehaviour
     //Local enum
     [SerializeField]
     BuildingType type;
-    //Is called when object spawns
-    public void SetBuildingType(int aType)
-    {
-        type = (BuildingType)aType;
-        value = Random.Range(minValue, maxValue);
-    }
 
+    [SerializeField]
     Transform[] enemySpawnTransforms = new Transform[] { };
 
     public List<GameObject> enemies = new List<GameObject>();
 
-    public void SpawnEnemies(GameObject aEnemy)
+    public void SpawnEnemies()
     {
         for (int i = 0; i < enemySpawnTransforms.Length; i++)
         {
-            GameObject tempEnemy = Instantiate(aEnemy, enemySpawnTransforms[i].position, Quaternion.identity);
+            GameObject tempEnemy = Instantiate(enemyObject, enemySpawnTransforms[i].position, Quaternion.identity);
             enemies.Add(tempEnemy);
         }
     }
