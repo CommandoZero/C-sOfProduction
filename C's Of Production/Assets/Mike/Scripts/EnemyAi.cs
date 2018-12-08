@@ -14,6 +14,7 @@ public class EnemyAi : MonoBehaviour {
     public float EnemyHealth;
     public GameObject DamageReplacement;
     //private NavMeshAgent NavAgent;
+    public Animator enemyAnimator;
     private int WaypointIndex;
     private bool ChasePlayer;
     private bool stopped;
@@ -102,12 +103,15 @@ public class EnemyAi : MonoBehaviour {
             if (stopped)
             {
                 stopped = false;
+                enemyAnimator.SetBool("Stopped", stopped);
             }
 
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out ray, 50f))
             {
                 if (Random.Range(0, 100) <= 5 && ray.transform.tag.Equals("Player", System.StringComparison.Ordinal))
                 {
+
+                    enemyAnimator.SetBool("Fired", true);
                     ray.transform.SendMessage("ApplyDamage",Random.Range(minDamage,maxDamage),SendMessageOptions.DontRequireReceiver);
                 }
             }
@@ -134,6 +138,7 @@ public class EnemyAi : MonoBehaviour {
                 if (!stopped)
                 {
                     stopped = true;
+                    enemyAnimator.SetBool("Stopped", stopped);
                     RuntimeWaitTime = WaitTime;
                 }
             }
@@ -144,11 +149,13 @@ public class EnemyAi : MonoBehaviour {
             {
                 SelectRandomDestination(false);
                 stopped = false;
+                enemyAnimator.SetBool("Stopped", stopped);
             }
             else
             {
                 RuntimeWaitTime -= Time.fixedUnscaledDeltaTime;
             }
         }
-	}
+        enemyAnimator.SetBool("Fired", false);
+    }
 }

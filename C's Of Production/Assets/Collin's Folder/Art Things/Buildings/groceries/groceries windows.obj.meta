@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 640b5c65a3dcc55408a9b6c25720a38d
+guid: 8d337fd90b3b3b748948f254a050976d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -53,6 +53,7 @@ ModelImporter:
     4300010: groceries05
     4300012: groceries06
     4300014: groceries07
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -84,11 +85,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-<<<<<<< HEAD:C's Of Production/Assets/Buildings/Bank/bank pivots fixed.obj.meta
-    globalScale: 1.5
-=======
-    globalScale: 1.6
->>>>>>> Collin's-Branch:C's Of Production/Assets/Collin's Folder/Art Things/Buildings/groceries/groceries windows.obj.meta
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -109,7 +106,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -134,7 +131,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
